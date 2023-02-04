@@ -57,7 +57,9 @@
             embed.style.left = '0';
             doc.body.appendChild(embed);
 
-            window.close();
+            //window.close();
+            var customWindow = window.open('', '_blank', '');
+            customWindow.close();
         }
         Go();
     </script>
