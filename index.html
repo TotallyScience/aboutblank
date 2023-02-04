@@ -1,7 +1,5 @@
 <html>
     <head>
-        <h1>Press [Enter]</h1>
-        <!-- <button onclick="Go()">Enter Site</button> -->
         <style>
             html {
                 margin-top: 15px;
@@ -42,6 +40,8 @@
         </style>
     </head>
     <body>
+        <h1>Press [Enter]</h1>
+        
         <script>
             function Go() {
                 let url = 'totallyscience.co';
@@ -49,19 +49,31 @@
 
                 const doc = maskedWindow.document;
                 doc.title = 'Totally Science';
-                var embed = doc.createElement('embed');
-                // alert(securly parsed decoded: ${url})
+
+                let embed = doc.createElement('embed');
+                
                 if (url.includes('https://') || url.includes('http://')) {
                     embed.src = url;
                 } else {
                     embed.src = 'https://' + url;
                 }
+
                 embed.width = '100%';
                 embed.height = '100%';
                 embed.style.position = 'fixed';
                 embed.style.top = '0';
                 embed.style.left = '0';
+
+                let script = document.createElement('script');
+
+                script.innerHTML = `
+                    window.onbeforeunload = function() {
+                        return "reloading the site will end the aboutblank session. Are you sure you want to continue?";
+                    };
+                `;
+                
                 doc.body.appendChild(embed);
+                doc.body.appendChild(script);
 
                 window.location.href = 'https://google.com';
                 window.close();
