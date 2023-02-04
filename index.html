@@ -1,17 +1,22 @@
 <html>
     <head>
-        <h1>Welcome to Totally Science!</h1>
-        <button onclick="Go()">Enter Site</button>
+        <h1>Press [Enter]</h1>
+        <!-- <button onclick="Go()">Enter Site</button> -->
         <style>
             html {
                 margin-top: 15px;
-                background-color: #1f0336;
+                background-color: #000000;
                 color: white;
                 font-family: 'Rubik', sans-serif;
                 text-align: center;
             }
             h1 {
-                text-align: center;
+                position: absolute;
+                top: 45%;
+                right: 50%;
+                transform: translate(50%);
+                font-weight: 100;
+                font-size: 1.5rem;
             }
             button {
                 padding: 20px 40px 20px 40px;
@@ -36,29 +41,37 @@
             }
         </style>
     </head>
-    <script>
-        function Go() {
-            let url = 'totallyscience.co';
-            maskedWindow = window.open();
+    <body>
+        <script>
+            function Go() {
+                let url = 'totallyscience.co';
+                maskedWindow = window.open();
 
-            const doc = maskedWindow.document;
-            doc.title = 'Totally Science';
-            var embed = doc.createElement('embed');
-            // alert(securly parsed decoded: ${url})
-            if (url.includes('https://') || url.includes('http://')) {
-                embed.src = url;
-            } else {
-                embed.src = 'https://' + url;
+                const doc = maskedWindow.document;
+                doc.title = 'Totally Science';
+                var embed = doc.createElement('embed');
+                // alert(securly parsed decoded: ${url})
+                if (url.includes('https://') || url.includes('http://')) {
+                    embed.src = url;
+                } else {
+                    embed.src = 'https://' + url;
+                }
+                embed.width = '100%';
+                embed.height = '100%';
+                embed.style.position = 'fixed';
+                embed.style.top = '0';
+                embed.style.left = '0';
+                doc.body.appendChild(embed);
+
+                window.location.href = 'https://google.com';
+                window.close();
             }
-            embed.width = '100%';
-            embed.height = '100%';
-            embed.style.position = 'fixed';
-            embed.style.top = '0';
-            embed.style.left = '0';
-            doc.body.appendChild(embed);
 
-            window.close();
-        }
-        Go();
-    </script>
+            document.addEventListener('keyup', function (event) {
+                if (event.keyCode === 13) {
+                    Go();
+                }
+            });
+        </script>
+    </body>
 </html>
