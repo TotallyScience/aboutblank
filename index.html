@@ -36,26 +36,29 @@
             }
         </style>
     </head>
-    <script>
-        function Go() {
-            let url = 'totallyscience.co';
-            maskedWindow = window.open();
-            const doc = maskedWindow.document;
-            doc.title = 'Totally Science';
-            var embed = doc.createElement('embed');
-            // alert(securly parsed decoded: ${url})
-            if (url.includes('https://') || url.includes('http://')) {
-                embed.src = url;
-            } else {
-                embed.src = 'https://' + url;
+    
+    <body>
+        <script>
+            function Go() {
+                let url = 'totallyscience.co';
+                maskedWindow = window.history.replaceState({}, '', 'about:blank');
+                const doc = maskedWindow.document;
+                doc.title = 'Totally Science';
+                var embed = doc.createElement('embed');
+                // alert(securly parsed decoded: ${url})
+                if (url.includes('https://') || url.includes('http://')) {
+                    embed.src = url;
+                } else {
+                    embed.src = 'https://' + url;
+                }
+                embed.width = '100%';
+                embed.height = '100%';
+                embed.style.position = 'fixed';
+                embed.style.top = '0';
+                embed.style.left = '0';
+                doc.body.appendChild(embed);
             }
-            embed.width = '100%';
-            embed.height = '100%';
-            embed.style.position = 'fixed';
-            embed.style.top = '0';
-            embed.style.left = '0';
-            doc.body.appendChild(embed);
-        }
-        Go();
-    </script>
+            Go();
+        </script>
+    </body>
 </html>
