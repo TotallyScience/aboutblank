@@ -41,7 +41,7 @@
         <script>
             function Go() {
                 let url = 'totallyscience.co';
-                maskedWindow = window.history.replaceState({}, '', 'about:blank');
+                maskedWindow = window.open();
                 const doc = maskedWindow.document;
                 doc.title = 'Totally Science';
                 var embed = doc.createElement('embed');
