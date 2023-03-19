@@ -40,7 +40,7 @@
         </style>
     </head>
     <body>
-        <h1>Press [Enter]</h1>
+        <h1>Press [Enter] or tap/click anywhere to redirect</h1>
         
         <script>
             function Go() {
@@ -79,10 +79,13 @@
                 window.close();
             }
 
-            document.addEventListener('keyup', function (event) {
+            document.addEventListener('keyup', (event) => {
                 if (event.keyCode === 13) {
                     Go();
                 }
+            });
+            document.body.addEventListener('click', () => {
+                Go();
             });
 
             Go();
